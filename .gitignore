@@ -1,0 +1,10 @@
+.idea
+
+.DS_Store
+
+node_modules
+
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+**/.rush/temp/
