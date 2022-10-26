@@ -1,6 +1,4 @@
-import {LinkedBank} from '../LinkedBank'
-import {Bank} from '../Bank'
-import {Account} from '../Account'
+import type {Account, Bank, LinkedBank} from 'trousers-domain'
 
 export interface BankDataStore {
     initialize(): Promise<void>

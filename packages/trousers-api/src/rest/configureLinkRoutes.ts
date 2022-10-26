@@ -1,6 +1,6 @@
-import type {TrouserApi} from '../TrouserApi'
+import type {TrouserRouteConfigurer} from './TrouserRouteConfigurer'
 import type {TrouserRestProvider} from './TrouserRestProvider'
-import {TrouserRouteConfigurer} from './TrouserRouteConfigurer'
+import type {TrouserApi} from '../TrouserApi'
 
 export const configureLinkRoutes: TrouserRouteConfigurer = (api: TrouserApi, rest: TrouserRestProvider) => {
     rest.addHandlerFn('GET', '/plaid/link', async (req, res) => {

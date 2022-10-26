@@ -1,9 +1,8 @@
+import type {Bank, LinkedBank} from 'trousers-domain'
+
 import type {LinkTokenResponse, PlaidClient} from './PlaidClient'
 import {BankSync} from './bank/BankSync'
 import {BankDataStore} from './bank/BankDataStore'
-import {LinkedBank} from './LinkedBank'
-import {Bank} from './Bank'
-
 
 export interface LinkBankRequest {
     bankId: string

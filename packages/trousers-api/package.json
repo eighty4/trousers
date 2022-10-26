@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "BSD-2-Clause",
   "scripts": {
-    "build": "tsc "
+    "build": "tsc --build"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.2.1",
@@ -13,7 +13,8 @@
     "luxon": "^3.0.1",
     "pg": "^8.7.3",
     "pg-pool": "^3.5.1",
-    "plaid": "10.7.0"
+    "plaid": "10.7.0",
+    "trousers-domain": "workspace:^0.0.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

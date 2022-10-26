@@ -1,4 +1,4 @@
-import {TrouserRestConfig} from './TrouserRestConfig'
+import type {TrouserRestConfig} from './TrouserRestConfig'
 
 export type HttpMethod = 'GET' | 'PATCH' | 'POST' | 'PUT' | 'DELETE'
 

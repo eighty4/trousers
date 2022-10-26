@@ -38,6 +38,10 @@
     {
       "packageName": "trousers-api",
       "projectFolder": "packages/trousers-api"
+    },
+    {
+      "packageName": "trousers-domain",
+      "projectFolder": "packages/trousers-domain"
     }
   ]
 }

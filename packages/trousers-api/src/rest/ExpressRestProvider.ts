@@ -1,8 +1,8 @@
-import type {Express} from 'express'
-import express from 'express'
-import type {HandlerFn, HttpMethod, TrouserRestProvider} from './TrouserRestProvider'
-import type {TrouserRestConfig} from './TrouserRestConfig'
 import cors from 'cors'
+import {default as express, type Express} from 'express'
+
+import type {TrouserRestConfig} from './TrouserRestConfig'
+import type {HandlerFn, HttpMethod, TrouserRestProvider} from './TrouserRestProvider'
 
 declare global {
     namespace Express {

@@ -1,10 +1,9 @@
+import type {Client} from 'pg'
 import Pool from 'pg-pool'
 
-import type {Client} from 'pg'
+import type {Account, Bank, LinkedBank} from 'trousers-domain'
+
 import type {BankDataStore} from './BankDataStore'
-import type {LinkedBank} from '../LinkedBank'
-import {Bank} from '../Bank'
-import {Account} from '../Account'
 
 // todo parameterize db schema
 export class PostgresBankDataStore implements BankDataStore {

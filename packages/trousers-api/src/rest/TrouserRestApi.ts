@@ -1,5 +1,5 @@
+import type {TrouserApi} from '../TrouserApi'
 import type {TrouserConfig} from '../TrouserConfig'
-import {TrouserApi} from '../TrouserApi'
 
 export class TrouserRestApi {
     private readonly api: TrouserApi

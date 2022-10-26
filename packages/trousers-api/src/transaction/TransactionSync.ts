@@ -1,8 +1,8 @@
 import {DateTime} from 'luxon'
 
+import type {TransactionDataStore} from './TransactionDataStore'
 import type {BankDataStore} from '../bank/BankDataStore'
 import type {PlaidClient, PageTransactionOpts} from '../PlaidClient'
-import type {TransactionDataStore} from './TransactionDataStore'
 
 class TransactionSync {
     private readonly bankDataStore: BankDataStore

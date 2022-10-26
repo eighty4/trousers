@@ -1,10 +1,10 @@
-import {Configuration, CountryCode, DepositoryAccountSubtype, PlaidApi, PlaidEnvironments, Products} from 'plaid'
-
-import type {Transaction} from './Transaction'
-import type {ItemPublicTokenExchangeRequest, LinkTokenCreateRequest, TransactionsGetRequest} from 'plaid/api'
-import {Bank} from './Bank'
-import {Account} from './Account'
 import {join} from 'path'
+
+import {Configuration, CountryCode, DepositoryAccountSubtype, PlaidApi, PlaidEnvironments, Products} from 'plaid'
+import type {ItemPublicTokenExchangeRequest, LinkTokenCreateRequest, TransactionsGetRequest} from 'plaid/api'
+
+import type {Account, Bank, Transaction} from 'trousers-domain'
+
 
 export interface PlaidClientConfig {
     clientId: string

@@ -1,6 +1,7 @@
+import type {LinkedBank} from 'trousers-domain'
+
 import type {BankDataStore} from './BankDataStore'
 import type {PlaidClient} from '../PlaidClient'
-import type {LinkedBank} from '../LinkedBank'
 
 export class BankSync {
 

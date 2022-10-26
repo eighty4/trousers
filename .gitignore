@@ -8,3 +8,7 @@ common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
 **/.rush/temp/
+
+packages/*/tsconfig.tsbuildinfo
+packages/*/src/**/*.d.ts
+packages/*/src/**/*.js

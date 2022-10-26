@@ -1,13 +1,13 @@
 import type {LinkConfig, PlaidClientConfig} from './PlaidClient'
 import type {BankDataStore} from './bank/BankDataStore'
-import type {TrouserRestProvider} from './rest/TrouserRestProvider'
-import type {TransactionDataStore} from './transaction/TransactionDataStore'
-import {ExpressRestProvider} from './rest/ExpressRestProvider'
 import {PostgresBankDataStore} from './bank/PostgresBankDataStore'
-import {ElasticTxDataStore} from './transaction/ElasticTxDataStore'
-import type {TrouserRestConfig} from './rest/TrouserRestConfig'
-import {configureLinkRoutes} from './rest/configureLinkRoutes'
 import {configureDataRoutes} from './rest/configureDataRoutes'
+import {configureLinkRoutes} from './rest/configureLinkRoutes'
+import {ExpressRestProvider} from './rest/ExpressRestProvider'
+import type {TrouserRestConfig} from './rest/TrouserRestConfig'
+import type {TrouserRestProvider} from './rest/TrouserRestProvider'
+import {ElasticTxDataStore} from './transaction/ElasticTxDataStore'
+import type {TransactionDataStore} from './transaction/TransactionDataStore'
 
 export interface TrouserConfig {
     plaidClientConfig: PlaidClientConfig
