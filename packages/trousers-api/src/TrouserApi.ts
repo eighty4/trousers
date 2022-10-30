@@ -1,8 +1,8 @@
+import type {BankDataStore} from 'trousers-data-interfaces'
 import type {Bank, LinkedBank} from 'trousers-domain'
 
+import {BankSync} from './BankSync'
 import type {LinkTokenResponse, PlaidClient} from './PlaidClient'
-import {BankSync} from './bank/BankSync'
-import {BankDataStore} from './bank/BankDataStore'
 
 export interface LinkBankRequest {
     bankId: string
@@ -31,7 +31,7 @@ export class TrouserApi {
         await new BankSync(this.bankDataStore, this.plaid).saveLinkedBank(linkedBank)
     }
 
-    getAllLinkedBankAccounts(userId: string): Promise<Array<Bank>> {
-        return this.bankDataStore.getAllLinkedBankAccounts(userId)
+    findLinkedAccountsByUserId(userId: string): Promise<Array<Bank>> {
+        return this.bankDataStore.findLinkedAccountsByUserId(userId)
     }
 }

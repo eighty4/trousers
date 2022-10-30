@@ -40,6 +40,22 @@
       "projectFolder": "packages/trousers-api"
     },
     {
+      "packageName": "trousers-data-elasticsearch",
+      "projectFolder": "packages/trousers-data-elasticsearch"
+    },
+    {
+      "packageName": "trousers-data-interfaces",
+      "projectFolder": "packages/trousers-data-interfaces"
+    },
+    {
+      "packageName": "trousers-data-postgres",
+      "projectFolder": "packages/trousers-data-postgres"
+    },
+    {
+      "packageName": "trousers-data-sql",
+      "projectFolder": "packages/trousers-data-sql"
+    },
+    {
       "packageName": "trousers-domain",
       "projectFolder": "packages/trousers-domain"
     }

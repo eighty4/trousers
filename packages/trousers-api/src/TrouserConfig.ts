@@ -1,13 +1,11 @@
+import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
+
 import type {LinkConfig, PlaidClientConfig} from './PlaidClient'
-import type {BankDataStore} from './bank/BankDataStore'
-import {PostgresBankDataStore} from './bank/PostgresBankDataStore'
 import {configureDataRoutes} from './rest/configureDataRoutes'
 import {configureLinkRoutes} from './rest/configureLinkRoutes'
 import {ExpressRestProvider} from './rest/ExpressRestProvider'
 import type {TrouserRestConfig} from './rest/TrouserRestConfig'
 import type {TrouserRestProvider} from './rest/TrouserRestProvider'
-import {ElasticTxDataStore} from './transaction/ElasticTxDataStore'
-import type {TransactionDataStore} from './transaction/TransactionDataStore'
 
 export interface TrouserConfig {
     plaidClientConfig: PlaidClientConfig
@@ -23,10 +21,10 @@ export const populateDefaultConfig = (cfg: Partial<TrouserConfig>) => {
         cfg.restProvider = new ExpressRestProvider()
     }
     if (!cfg.bankDataStore) {
-        cfg.bankDataStore = new PostgresBankDataStore()
+        throw new Error('no bank data store')
     }
     if (!cfg.transactionDataStore) {
-        cfg.transactionDataStore = new ElasticTxDataStore()
+        throw new Error('no transaction data store')
     }
     if (!cfg.restConfig) {
         cfg.restConfig = {

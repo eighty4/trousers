@@ -1,8 +1,8 @@
 import {DateTime} from 'luxon'
 
-import type {TransactionDataStore} from './TransactionDataStore'
-import type {BankDataStore} from '../bank/BankDataStore'
-import type {PlaidClient, PageTransactionOpts} from '../PlaidClient'
+import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
+
+import type {PlaidClient, PageTransactionOpts} from './PlaidClient'
 
 class TransactionSync {
     private readonly bankDataStore: BankDataStore
@@ -37,7 +37,7 @@ class TransactionSync {
     }
 
     private async txImport(itemId: string, opts: PageTransactionOpts) {
-        const linkedBank = await this.bankDataStore.getLinkedBankByItemId(itemId)
+        const linkedBank = await this.bankDataStore.findLinkedBankByItemId(itemId)
         if (!linkedBank) {
             throw new Error('no linked bank with item id ' + itemId)
         }

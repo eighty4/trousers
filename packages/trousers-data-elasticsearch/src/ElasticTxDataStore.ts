@@ -1,9 +1,8 @@
 import {Client} from '@elastic/elasticsearch'
 import type {BulkOperationType, MappingProperty} from '@elastic/elasticsearch/lib/api/types'
 
+import type {TransactionDataStore} from 'trousers-data-interfaces'
 import type {Transaction} from 'trousers-domain'
-
-import type {TransactionDataStore} from './TransactionDataStore'
 
 export class ElasticTxDataStore implements TransactionDataStore {
 

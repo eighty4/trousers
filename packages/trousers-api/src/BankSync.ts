@@ -1,7 +1,7 @@
+import type {BankDataStore} from 'trousers-data-interfaces'
 import type {LinkedBank} from 'trousers-domain'
 
-import type {BankDataStore} from './BankDataStore'
-import type {PlaidClient} from '../PlaidClient'
+import type {PlaidClient} from './PlaidClient'
 
 export class BankSync {
 
@@ -19,6 +19,6 @@ export class BankSync {
         await this.bankDataStore.saveLinkedBank(linkedBank)
 
         const accounts = await this.plaid.getAccounts(linkedBank.accessToken)
-        await this.bankDataStore.saveAccounts(linkedBank, accounts)
+        await this.bankDataStore.saveLinkedAccounts(linkedBank, accounts)
     }
 }

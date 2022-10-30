@@ -1,7 +1,7 @@
 export interface Balances {
-    available: number | null
-    current: number | null
-    limit: number | null
+    available?: number | null
+    current?: number | null
+    limit?: number | null
     currencyCode: string | null
     lastUpdated?: string | null
 }
@@ -13,5 +13,5 @@ export interface Account {
     officialName: string | null
     type: string
     subtype: string | null
-    balances: Balances
+    balances?: Balances
 }

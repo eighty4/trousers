@@ -1,8 +1,8 @@
-import {Account} from './Account'
+import type {Account} from './Account'
 
 export interface Bank {
     bankId: string
-    primaryColor: string
+    primaryColor?: string
     logo?: string
     name: string
     accounts?: Array<Account>

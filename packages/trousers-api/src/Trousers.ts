@@ -1,8 +1,8 @@
+import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
+
 import type {PlaidClientConfig} from './PlaidClient'
 import type {TrouserConfig} from './TrouserConfig'
-import type {BankDataStore} from './bank/BankDataStore'
 import type {TrouserRestProvider} from './rest/TrouserRestProvider'
-import type {TransactionDataStore} from './transaction/TransactionDataStore'
 
 class Trousers {
 

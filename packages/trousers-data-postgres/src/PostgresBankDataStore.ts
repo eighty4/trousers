@@ -1,17 +1,14 @@
 import type {Client} from 'pg'
 import Pool from 'pg-pool'
 
+import type {BankDataStore} from 'trousers-data-interfaces'
 import type {Account, Bank, LinkedBank} from 'trousers-domain'
 
-import type {BankDataStore} from './BankDataStore'
-
-// todo parameterize db schema
 export class PostgresBankDataStore implements BankDataStore {
 
     private readonly pg: Pool<Client>
 
     constructor(pg?: Pool<Client>) {
-        // todo externalize db connection
         this.pg = pg || new Pool({
             database: 'eighty4',
             host: 'localhost',
@@ -27,7 +24,7 @@ export class PostgresBankDataStore implements BankDataStore {
 
     }
 
-    async getLinkedBankByItemId(itemId: string): Promise<LinkedBank | undefined> {
+    async findLinkedBankByItemId(itemId: string): Promise<LinkedBank | undefined> {
         const q = `
             select *
             from eighty4_bank.linked_banks
@@ -75,7 +72,7 @@ export class PostgresBankDataStore implements BankDataStore {
         await this.pg.query(q, [linkedBank.itemId, linkedBank.accessToken, linkedBank.bankId, linkedBank.userId])
     }
 
-    async saveAccounts(linkedBank: LinkedBank, accounts: Array<Account>): Promise<void> {
+    async saveLinkedAccounts(linkedBank: LinkedBank, accounts: Array<Account>): Promise<void> {
         let q = `
             insert into eighty4_bank.linked_accounts (linked_account_id, linked_bank_id, user_id, bank_id,
                                                       display_name, official_name, mask, currency_code,
@@ -103,7 +100,7 @@ export class PostgresBankDataStore implements BankDataStore {
         await this.pg.query(q, p)
     }
 
-    async getAllLinkedBankAccounts(userId: string): Promise<Array<Bank>> {
+    async findLinkedAccountsByUserId(userId: string): Promise<Array<Bank>> {
         return Promise.resolve([])
     }
 }

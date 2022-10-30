@@ -4,6 +4,6 @@ import type {TrouserApi} from '../TrouserApi'
 
 export const configureDataRoutes: TrouserRouteConfigurer = (api: TrouserApi, rest: TrouserRestProvider) => {
     rest.addHandlerFn('GET', '/accounts', async (req, res) => {
-        res.json(await api.getAllLinkedBankAccounts(req.authed.userId)).send()
+        res.json(await api.findLinkedAccountsByUserId(req.authed.userId)).send()
     })
 }

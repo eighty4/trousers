@@ -1,4 +1,4 @@
-create table eighty4_bank.users
+create table trousers.users
 (
     user_id      uuid                    default uuid_generate_v4() primary key,
     email        varchar unique not null,
@@ -6,7 +6,7 @@ create table eighty4_bank.users
     last_login_when timestamptz
 );
 
-create table eighty4_bank.banks
+create table trousers.banks
 (
     bank_id       varchar primary key,
     name          varchar not null,
@@ -14,22 +14,22 @@ create table eighty4_bank.banks
     logo          varchar
 );
 
-create table eighty4_bank.linked_banks
+create table trousers.linked_banks
 (
     linked_bank_id varchar primary key,
-    user_id        uuid        not null references eighty4_bank.users (user_id),
-    bank_id        varchar     not null references eighty4_bank.banks (bank_id),
+    user_id        uuid        not null references trousers.users (user_id),
+    bank_id        varchar     not null references trousers.banks (bank_id),
     access_token   varchar     not null,
     linked_when    timestamptz not null default current_timestamp,
     unique (user_id, bank_id)
 );
 
-create table eighty4_bank.linked_accounts
+create table trousers.linked_accounts
 (
     linked_account_id     varchar primary key,
-    linked_bank_id        varchar     not null references eighty4_bank.linked_banks (linked_bank_id),
-    user_id               uuid        not null references eighty4_bank.users (user_id),
-    bank_id               varchar     not null references eighty4_bank.banks (bank_id),
+    linked_bank_id        varchar     not null references trousers.linked_banks (linked_bank_id),
+    user_id               uuid        not null references trousers.users (user_id),
+    bank_id               varchar     not null references trousers.banks (bank_id),
     display_name          varchar     not null,
     official_name         varchar,
     mask                  char(4),
