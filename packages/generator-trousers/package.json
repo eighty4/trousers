@@ -1,0 +1,12 @@
+{
+  "name": "generator-trousers",
+  "version": "0.0.1",
+  "license": "BSD-2-Clause",
+  "keywords": ["yeoman-generator"],
+  "files": [
+    "app"
+  ],
+  "dependencies": {
+    "yeoman-generator": "5.7.0"
+  }
+}

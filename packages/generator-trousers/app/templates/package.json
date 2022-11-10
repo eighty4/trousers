@@ -1,0 +1,10 @@
+{
+  "name": "<%= name %>",
+  "scripts": {
+
+  },
+  "dependencies": {
+    "trousers-api": "<%= trousers_version %>",
+    "trousers-data-sql": "<% trousers_version %>"
+  }
+}

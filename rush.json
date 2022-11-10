@@ -36,6 +36,14 @@
   "allowedProjectTags": [],
   "projects": [
     {
+      "packageName": "generator-trousers",
+      "projectFolder": "packages/generator-trousers"
+    },
+    {
+      "packageName": "trousers",
+      "projectFolder": "packages/trousers"
+    },
+    {
       "packageName": "trousers-api",
       "projectFolder": "packages/trousers-api"
     },
