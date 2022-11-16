@@ -85,9 +85,9 @@ export class PostgresBankDataStore implements BankDataStore {
             p.push(
                 account.accountId, linkedBank.itemId, linkedBank.userId, linkedBank.bankId,
                 account.displayName, account.officialName, account.mask,
-                account.balances.currencyCode, account.balances.available,
-                account.balances.current, account.balances.limit,
-                account.balances.lastUpdated || new Date(),
+                account.balances?.currencyCode, account.balances?.available,
+                account.balances?.current, account.balances?.limit,
+                account.balances?.lastUpdated || new Date(),
                 account.type, account.subtype,
             )
             if (i > 0) {

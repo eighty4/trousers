@@ -1,8 +1,8 @@
 create table trousers.users
 (
-    user_id      uuid                    default uuid_generate_v4() primary key,
-    email        varchar unique not null,
-    created_when timestamptz    not null default current_timestamp,
+    user_id         uuid                    default uuid_generate_v4() primary key,
+    email           varchar unique not null,
+    created_when    timestamptz    not null default current_timestamp,
     last_login_when timestamptz
 );
 
@@ -33,11 +33,11 @@ create table trousers.linked_accounts
     display_name          varchar     not null,
     official_name         varchar,
     mask                  char(4),
-    currency_code         char(3)     not null,
+    currency_code         char(3),
     balance_available     decimal,
     balance_current       decimal,
     balance_limit         decimal,
-    balances_updated_when timestamptz not null,
+    balances_updated_when timestamptz,
     account_type          varchar     not null,
     account_subtype       varchar,
     linked_when           timestamptz not null default current_timestamp
