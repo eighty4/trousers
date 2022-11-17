@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "commonjs",
+    "target": "ES2021",
+    "module": "Node16",
+    "lib": [
+      "ES2021"
+    ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "composite": true,
@@ -22,5 +25,13 @@
   ],
   "include": [
     "src/*.ts"
+  ],
+  "references": [
+    {
+      "path": "../trousers-data-interfaces"
+    },
+    {
+      "path": "../trousers-domain"
+    }
   ]
 }
