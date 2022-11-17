@@ -2,11 +2,18 @@ import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces
 import type {Account, Balances, Bank, LinkedBank, Transaction} from 'trousers-domain'
 
 import {DatabaseModels} from './DatabaseModels'
+import {DatabaseModelsFactory} from './DatabaseModelsFactory'
 
 export class SequelizeDataStore implements BankDataStore, TransactionDataStore {
 
-    constructor(private readonly models: DatabaseModels) {
+    private readonly models: DatabaseModels
 
+    constructor(models?: DatabaseModels) {
+        if (models) {
+            this.models = models
+        } else {
+            this.models = DatabaseModelsFactory.create()
+        }
     }
 
     initialize(): Promise<void> {

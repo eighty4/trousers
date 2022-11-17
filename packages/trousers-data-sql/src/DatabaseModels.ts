@@ -67,8 +67,10 @@ export class DatabaseModels {
     readonly AccountBalances: ModelStatic<AccountBalancesModel>
     readonly Transaction: ModelStatic<TransactionModel>
 
-    constructor(connectionOptsOrUri?: string | ConnectionOpts) {
-        if (typeof connectionOptsOrUri === 'string') {
+    constructor(connectionOptsOrUri: string | ConnectionOpts) {
+        if (!connectionOptsOrUri) {
+            throw new Error('connectionOptsOrUri must be a string or instance of ConnectionOpts')
+        } else if (typeof connectionOptsOrUri === 'string') {
             this.sequelize = new Sequelize(connectionOptsOrUri as string)
         } else {
             this.sequelize = new Sequelize(connectionOptsOrUri as ConnectionOpts)
