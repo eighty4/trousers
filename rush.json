@@ -12,7 +12,7 @@
   "nodeSupportedVersionRange": ">=16",
   "suppressNodeLtsWarning": false,
   "ensureConsistentVersions": true,
-  "projectFolderMinDepth": 2,
+  "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 2,
   "allowMostlyStandardPackageNames": false,
   "gitPolicy": {
@@ -35,6 +35,14 @@
   "hotfixChangeEnabled": false,
   "allowedProjectTags": [],
   "projects": [
+    {
+      "packageName": "example-fintech-startup",
+      "projectFolder": "example-fintech-startup"
+    },
+    {
+      "packageName": "create-trousers-app",
+      "projectFolder": "packages/create-trousers-app"
+    },
     {
       "packageName": "trousers-api",
       "projectFolder": "packages/trousers-api"

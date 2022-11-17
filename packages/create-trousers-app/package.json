@@ -1,0 +1,15 @@
+{
+  "name": "create-trousers-app",
+  "version": "0.0.1",
+  "license": "BSD-2-Clause",
+  "bin": "src/CreateTrousersApp",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "4.7.4",
+    "@types/node": "^16.4.14"
+  }
+}

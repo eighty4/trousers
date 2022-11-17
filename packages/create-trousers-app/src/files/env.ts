@@ -1,0 +1,14 @@
+export default () => `
+# https://dashboard.plaid.com/signup
+# https://dashboard.plaid.com/team/keys
+PLAID_CLIENT_ID=
+PLAID_SECRET=
+
+TROUSERS_SQL_DIALECT=
+TROUSERS_SQL_DATABASE=
+TROUSERS_SQL_USERNAME=
+TROUSERS_SQL_PASSWORD=
+TROUSERS_SQL_HOST=
+TROUSERS_SQL_PORT=
+TROUSERS_SQL_SCHEMA=
+`
