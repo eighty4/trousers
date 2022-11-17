@@ -1,79 +1,31 @@
 import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
 
-import type {LinkConfig, PlaidClientConfig} from './PlaidClient'
-import type {TrouserConfig} from './TrouserConfig'
-import type {TrouserRestProvider} from './rest/TrouserRestProvider'
-import {configureDataRoutes} from './rest/configureDataRoutes'
-import {configureLinkRoutes} from './rest/configureLinkRoutes'
+import {PlaidClient, type PlaidClientConfig} from './PlaidClient'
+import {TrousersApi} from './TrousersApi'
+import type {TrousersComponents} from './TrousersComponents'
+import type {TrousersConfig} from './TrousersConfig'
 
-class TrousersBuilder {
-    plaidClientConfig: PlaidClientConfig
-    linkConfig: Partial<LinkConfig> = {}
-    bankDataStore?: BankDataStore
-    transactionDataStore?: TransactionDataStore
-    restProvider?: TrouserRestProvider
+export class Trousers {
 
-    constructor(plaidClientConfig: PlaidClientConfig) {
-        this.plaidClientConfig = plaidClientConfig
+    static builder(): Trousers {
+        return new Trousers()
     }
 
-    createConfig(): TrouserConfig {
-        if (!this.restProvider) {
-            throw new Error('TrouserRestProvider was not configured with Trousers.restProvider')
-        }
-        if (!this.bankDataStore) {
-            throw new Error('BankDataStore was not configured with Trousers.dataStore or Trousers.bankDataStore')
-        }
-        if (!this.transactionDataStore) {
-            throw new Error('TransactionDataStore was not configured with Trousers.dataStore or Trousers.transactionDataStore')
-        }
-        if (!this.linkConfig.appName) {
-            this.linkConfig.appName = 'a Trousers app'
-        }
-        if (!this.linkConfig.webhookUrlPrefix) {
-            this.linkConfig.webhookUrlPrefix = 'http://localhost:3001'
-        }
-        return {
-            plaidClientConfig: this.plaidClientConfig,
-            restProvider: this.restProvider,
-            bankDataStore: this.bankDataStore,
-            transactionDataStore: this.transactionDataStore,
-            restConfig: {
-                port: 8000,
-                routeConfigurers: [
-                    configureDataRoutes,
-                    configureLinkRoutes,
-                ],
-            },
-            linkConfig: this.linkConfig as LinkConfig,
-        }
+    static withConfig(config: Partial<TrousersConfig>): Trousers {
+        return new Trousers(config)
     }
-}
-
-class Trousers {
 
     static withPlaidCredentials(clientId: string, secret: string): Trousers {
         if (!clientId || !secret) {
             throw new Error('Trousers.withPlaidCredentials arguments are null or undefined')
         }
-        return new Trousers({clientId, secret})
+        return new Trousers({plaidClientConfig: {clientId, secret}})
     }
 
     private builder: TrousersBuilder
 
-    constructor(plaidClientConfig: PlaidClientConfig) {
-        this.builder = new TrousersBuilder(plaidClientConfig)
-    }
-
-    linkConfig(linkConfig: LinkConfig): Trousers {
-        if (!linkConfig) {
-            throw new Error('Trousers.linkConfig is null or undefined')
-        }
-        this.builder.linkConfig = {
-            ...this.builder.linkConfig,
-            ...linkConfig,
-        }
-        return this
+    constructor(config?: Partial<TrousersConfig>) {
+        this.builder = new TrousersBuilder(config)
     }
 
     dataStore(dataStore: BankDataStore & TransactionDataStore): this {
@@ -101,16 +53,74 @@ class Trousers {
         return this
     }
 
-    restProvider(restProvider: TrouserRestProvider): this {
-        if (!restProvider) {
-            throw new Error('Trousers.restProvider is null or undefined')
-        }
-        this.builder.restProvider = restProvider
-        return this
+    buildPlaidClient(): PlaidClient {
+        const config = this.builder.createConfig()
+        return new PlaidClient(config.plaidClientConfig)
     }
 
-    start(): void {
+    buildTrousersApi(): TrousersApi {
+        const config = this.builder.createConfig()
+        const plaidClient = new PlaidClient(config.plaidClientConfig)
+        return new TrousersApi(plaidClient, config.bankDataStore)
+    }
 
+    buildTrousersComponents(): TrousersComponents {
+        const {plaidClientConfig, bankDataStore, transactionDataStore} = this.builder.createConfig()
+        const plaidClient = new PlaidClient(plaidClientConfig)
+        const trousersApi = new TrousersApi(plaidClient, bankDataStore)
+        return {
+            plaidClient,
+            trousersApi,
+            bankDataStore,
+            transactionDataStore,
+        }
+    }
+
+    start(): Promise<TrousersComponents> {
+        return Promise.resolve(this.buildTrousersComponents())
+    }
+}
+
+class TrousersBuilder {
+    plaidClientConfig: Partial<PlaidClientConfig> = {}
+    bankDataStore?: BankDataStore
+    transactionDataStore?: TransactionDataStore
+
+    constructor(config?: Partial<TrousersConfig>) {
+        if (config) {
+            if (config.plaidClientConfig) {
+                this.plaidClientConfig = config.plaidClientConfig
+            }
+            if (config.bankDataStore) {
+                this.bankDataStore = config.bankDataStore
+            }
+            if (config.transactionDataStore) {
+                this.transactionDataStore = config.transactionDataStore
+            }
+        }
+    }
+
+    createConfig(): TrousersConfig {
+        if (!this.plaidClientConfig) {
+            throw new Error('PlaidClientConfig was not configured with Trousers.plaidClientConfig')
+        }
+        if (!this.plaidClientConfig.clientId) {
+            throw new Error('PlaidClientConfig is was not configured with clientId at Trousers.plaidClientConfig.clientId')
+        }
+        if (!this.plaidClientConfig.secret) {
+            throw new Error('PlaidClientConfig is was not configured with secret at Trousers.plaidClientConfig.secret')
+        }
+        if (!this.bankDataStore) {
+            throw new Error('BankDataStore was not configured with Trousers.dataStore or Trousers.bankDataStore')
+        }
+        if (!this.transactionDataStore) {
+            throw new Error('TransactionDataStore was not configured with Trousers.dataStore or Trousers.transactionDataStore')
+        }
+        return {
+            plaidClientConfig: this.plaidClientConfig as PlaidClientConfig,
+            bankDataStore: this.bankDataStore,
+            transactionDataStore: this.transactionDataStore,
+        }
     }
 }
 

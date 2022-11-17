@@ -1,4 +1,4 @@
-import type {TrouserRestConfig} from './TrouserRestConfig'
+import type {TrousersRestConfig} from './TrousersRestConfig'
 
 export type HttpMethod = 'GET' | 'PATCH' | 'POST' | 'PUT' | 'DELETE'
 
@@ -20,8 +20,8 @@ export interface RestResponse {
 
 export type HandlerFn = (req: RestRequest, res: RestResponse) => Promise<void>
 
-export interface TrouserRestProvider {
+export interface TrousersRestProvider {
     configure(): void
     addHandlerFn(method: HttpMethod, path: string, fn: HandlerFn): void
-    start(cfg: TrouserRestConfig): Promise<void>
+    start(cfg: TrousersRestConfig): Promise<void>
 }

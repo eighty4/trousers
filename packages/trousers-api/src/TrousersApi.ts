@@ -10,7 +10,7 @@ export interface LinkBankRequest {
     userId: string
 }
 
-export class TrouserApi {
+export class TrousersApi {
 
     constructor(private readonly plaid: PlaidClient,
                 private readonly bankDataStore: BankDataStore) {

@@ -1,8 +1,8 @@
 import cors from 'cors'
 import {default as express, type Express} from 'express'
 
-import type {TrouserRestConfig} from './TrouserRestConfig'
-import type {HandlerFn, HttpMethod, TrouserRestProvider} from './TrouserRestProvider'
+import type {TrousersRestConfig} from './TrousersRestConfig'
+import type {HandlerFn, HttpMethod, TrousersRestProvider} from './TrousersRestProvider'
 
 declare global {
     namespace Express {
@@ -12,7 +12,7 @@ declare global {
     }
 }
 
-export class ExpressRestProvider implements TrouserRestProvider {
+export class ExpressRestProvider implements TrousersRestProvider {
 
     private readonly app: Express
 
@@ -50,7 +50,7 @@ export class ExpressRestProvider implements TrouserRestProvider {
         }
     }
 
-    start(cfg: TrouserRestConfig): Promise<void> {
+    start(cfg: TrousersRestConfig): Promise<void> {
         return new Promise(res => this.app.listen(cfg.port, res))
     }
 }

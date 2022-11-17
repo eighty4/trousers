@@ -46,7 +46,7 @@ export class PlaidClient {
 
     private readonly plaid: PlaidApi
 
-    constructor(cfg: PlaidClientConfig, private readonly linkCfg: LinkConfig) {
+    constructor(cfg: PlaidClientConfig) {
         this.plaid = new PlaidApi(new Configuration({
             basePath: PlaidEnvironments[cfg.env || 'sandbox'],
             baseOptions: {
@@ -75,7 +75,7 @@ export class PlaidClient {
 
     private createLinkTokenRequest(clientUserId: string): LinkTokenCreateRequest {
         return {
-            client_name: this.linkCfg.appName,
+            client_name: 'a Trousers app',
             products: [Products.Auth, Products.Transactions],
             country_codes: [CountryCode.Us],
             language: 'en',
@@ -90,7 +90,7 @@ export class PlaidClient {
             user: {
                 client_user_id: clientUserId,
             },
-            webhook: join(this.linkCfg.webhookUrlPrefix, 'item'),
+            webhook: join('http://localhost:3000/', 'item'),
         }
     }
 

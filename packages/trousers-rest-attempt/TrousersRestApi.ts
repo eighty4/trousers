@@ -1,11 +1,11 @@
-import type {TrouserApi} from '../TrouserApi'
-import type {TrouserConfig} from '../TrouserConfig'
+import type {TrousersApi} from '../TrousersApi'
+import type {TrousersConfig} from '../TrousersConfig'
 
-export class TrouserRestApi {
-    private readonly api: TrouserApi
-    private readonly cfg: TrouserConfig
+export class TrousersRestApi {
+    private readonly api: TrousersApi
+    private readonly cfg: TrousersConfig
 
-    constructor(api: TrouserApi, cfg: TrouserConfig) {
+    constructor(api: TrousersApi, cfg: TrousersConfig) {
         this.api = api
         this.cfg = cfg
     }
