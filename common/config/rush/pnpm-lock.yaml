@@ -127,6 +127,12 @@ importers:
     devDependencies:
       typescript: 4.7.4
 
+  ../../packages/trousers-service-interface:
+    specifiers:
+      typescript: 4.7.4
+    devDependencies:
+      typescript: 4.7.4
+
 packages:
 
   /@ampproject/remapping/2.2.0:

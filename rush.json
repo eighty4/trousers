@@ -66,6 +66,10 @@
     {
       "packageName": "trousers-domain",
       "projectFolder": "packages/trousers-domain"
+    },
+    {
+      "packageName": "trousers-service-interface",
+      "projectFolder": "packages/trousers-service-interface"
     }
   ]
 }
