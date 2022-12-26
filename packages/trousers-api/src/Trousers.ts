@@ -1,4 +1,5 @@
 import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
+import type {TrousersService} from 'trousers-service-interface'
 
 import {PlaidClient, type PlaidClientConfig} from './PlaidClient'
 import {TrousersApi} from './TrousersApi'
@@ -53,6 +54,14 @@ export class Trousers {
         return this
     }
 
+    withTrousersService(service: TrousersService): this {
+        if (!service) {
+            throw new Error('Trousers.withTrousersService service arg is null or undefined')
+        }
+        this.builder.services.push(service)
+        return this
+    }
+
     buildPlaidClient(): PlaidClient {
         const config = this.builder.createConfig()
         return new PlaidClient(config.plaidClientConfig)
@@ -65,7 +74,7 @@ export class Trousers {
     }
 
     buildTrousersComponents(): TrousersComponents {
-        const {plaidClientConfig, bankDataStore, transactionDataStore} = this.builder.createConfig()
+        const {plaidClientConfig, bankDataStore, transactionDataStore, services} = this.builder.createConfig()
         const plaidClient = new PlaidClient(plaidClientConfig)
         const trousersApi = new TrousersApi(plaidClient, bankDataStore)
         return {
@@ -73,11 +82,22 @@ export class Trousers {
             trousersApi,
             bankDataStore,
             transactionDataStore,
+            services,
         }
     }
 
-    start(): Promise<TrousersComponents> {
-        return Promise.resolve(this.buildTrousersComponents())
+    async start(): Promise<TrousersComponents> {
+        const components = this.buildTrousersComponents()
+
+        await Promise.all([
+            components.services.map(service => service.initialize()),
+        ])
+
+        await Promise.all([
+            components.services.map(service => service.start()),
+        ])
+
+        return components
     }
 }
 
@@ -85,6 +105,7 @@ class TrousersBuilder {
     plaidClientConfig: Partial<PlaidClientConfig> = {}
     bankDataStore?: BankDataStore
     transactionDataStore?: TransactionDataStore
+    services: Array<TrousersService> = []
 
     constructor(config?: Partial<TrousersConfig>) {
         if (config) {
@@ -120,6 +141,7 @@ class TrousersBuilder {
             plaidClientConfig: this.plaidClientConfig as PlaidClientConfig,
             bankDataStore: this.bankDataStore,
             transactionDataStore: this.transactionDataStore,
+            services: this.services,
         }
     }
 }

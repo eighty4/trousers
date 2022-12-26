@@ -24,17 +24,6 @@
     "node_modules"
   ],
   "include": [
-    "src/**/*.ts"
-  ],
-  "references": [
-    {
-      "path": "../trousers-data-interfaces"
-    },
-    {
-      "path": "../trousers-domain"
-    },
-    {
-      "path": "../trousers-service-interface"
-    }
+    "src/*.ts"
   ]
 }

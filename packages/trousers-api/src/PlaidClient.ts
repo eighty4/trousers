@@ -147,8 +147,8 @@ export class PlaidClient {
             institution_id: bankId,
             country_codes: [CountryCode.Us],
             options: {
-                include_optional_metadata: true
-            }
+                include_optional_metadata: true,
+            },
         }
         const response = await this.plaid.institutionsGetById(request)
         return {
@@ -177,7 +177,7 @@ export class PlaidClient {
                 limit: acct.balances.limit,
                 currencyCode: acct.balances.iso_currency_code || acct.balances.unofficial_currency_code,
                 lastUpdated: acct.balances.last_updated_datetime,
-            }
+            },
         }))
     }
 }

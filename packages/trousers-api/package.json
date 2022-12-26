@@ -11,7 +11,8 @@
     "luxon": "^3.0.1",
     "plaid": "10.7.0",
     "trousers-data-interfaces": "workspace:^0.0.1",
-    "trousers-domain": "workspace:^0.0.1"
+    "trousers-domain": "workspace:^0.0.1",
+    "trousers-service-interface": "workspace:^0.0.1"
   },
   "devDependencies": {
     "@types/luxon": "^2.3.2",

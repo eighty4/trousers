@@ -34,12 +34,14 @@ importers:
       plaid: 10.7.0
       trousers-data-interfaces: workspace:^0.0.1
       trousers-domain: workspace:^0.0.1
+      trousers-service-interface: workspace:^0.0.1
       typescript: 4.7.4
     dependencies:
       luxon: 3.0.1
       plaid: 10.7.0
       trousers-data-interfaces: link:../trousers-data-interfaces
       trousers-domain: link:../trousers-domain
+      trousers-service-interface: link:../trousers-service-interface
     devDependencies:
       '@types/luxon': 2.4.0
       '@types/node': 16.11.47
