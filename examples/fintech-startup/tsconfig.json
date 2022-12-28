@@ -4,11 +4,11 @@
     "rootDir": "src",
     "outDir": "src",
     "paths": {
-      "trousers-data-interfaces": [
-        "../trousers-data-interfaces"
+      "trousers-api": [
+        "../../packages/trousers-api"
       ],
-      "trousers-domain": [
-        "../trousers-domain"
+      "trousers-data-sql": [
+        "../../packages/trousers-data-sql"
       ]
     }
   },
@@ -18,10 +18,10 @@
   "exclude": [],
   "references": [
     {
-      "path": "../trousers-data-interfaces"
+      "path": "../../packages/trousers-api"
     },
     {
-      "path": "../trousers-domain"
+      "path": "../../packages/trousers-data-sql"
     }
   ]
 }

@@ -7,10 +7,9 @@ node_modules
 common/deploy/
 common/temp/
 common/autoinstallers/*/.npmrc
-**/.rush/temp/
-
-packages/*/*.build.log
-packages/*/*.build.error.log
-packages/*/tsconfig.tsbuildinfo
-packages/*/src/**/*.d.ts
-packages/*/src/**/*.js
+*/*/.rush/temp/
+*/*/*.build.log
+*/*/*.build.error.log
+*/*/tsconfig.tsbuildinfo
+*/*/**/src/**/*.d.ts
+*/*/**/src/**/*.js

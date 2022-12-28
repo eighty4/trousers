@@ -1,5 +1,4 @@
-import {DataTypes, Model, Sequelize} from '@sequelize/core'
-import {ModelStatic} from '@sequelize/core/types/model'
+import {DataTypes, Model, type ModelStatic, Sequelize} from '@sequelize/core'
 
 import type {ConnectionOpts} from './ConnectionOpts'
 

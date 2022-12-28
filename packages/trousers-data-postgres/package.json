@@ -2,8 +2,8 @@
   "name": "trousers-data-postgres",
   "version": "0.0.1",
   "license": "BSD-2-Clause",
-  "main": "./src/exports",
-  "exports": "./src/exports",
+  "exports": "./src/exports.js",
+  "types": "./src/exports.d.ts",
   "scripts": {
     "build": "tsc --build"
   },
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/pg": "~8.6.5",
     "@types/pg-pool": "^2.0.3",
+    "trousers-tsconfig": "workspace:^0.0.1",
     "typescript": "4.9.4"
   }
 }

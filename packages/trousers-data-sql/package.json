@@ -2,8 +2,8 @@
   "name": "trousers-data-sql",
   "version": "0.0.1",
   "license": "BSD-2-Clause",
-  "main": "./src/exports",
-  "exports": "./src/exports",
+  "exports": "./src/exports.js",
+  "types": "./src/exports.d.ts",
   "scripts": {
     "build": "tsc --build",
     "test": "jest"
@@ -11,10 +11,11 @@
   "dependencies": {
     "trousers-data-interfaces": "workspace:^0.0.1",
     "trousers-domain": "workspace:^0.0.1",
-    "@sequelize/core": "~7.0.0-alpha.10",
+    "@sequelize/core": "~7.0.0-alpha.20",
     "@types/node": "^16.4.14"
   },
   "devDependencies": {
+    "trousers-tsconfig": "workspace:^0.0.1",
     "typescript": "4.9.4",
     "@types/jest": "~29.2.0",
     "jest": "~29.2.2",

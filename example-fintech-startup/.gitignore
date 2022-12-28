@@ -1,5 +1,0 @@
-*.build.log
-*.build.error.log
-tsconfig.tsbuildinfo
-src/**/*.d.ts
-src/**/*.js

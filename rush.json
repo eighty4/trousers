@@ -12,7 +12,7 @@
   "nodeSupportedVersionRange": ">=16",
   "suppressNodeLtsWarning": false,
   "ensureConsistentVersions": true,
-  "projectFolderMinDepth": 1,
+  "projectFolderMinDepth": 2,
   "projectFolderMaxDepth": 2,
   "allowMostlyStandardPackageNames": false,
   "gitPolicy": {
@@ -36,8 +36,12 @@
   "allowedProjectTags": [],
   "projects": [
     {
+      "packageName": "trousers-tsconfig",
+      "projectFolder": "common/tsconfig"
+    },
+    {
       "packageName": "example-fintech-startup",
-      "projectFolder": "example-fintech-startup"
+      "projectFolder": "examples/fintech-startup"
     },
     {
       "packageName": "create-trousers-app",

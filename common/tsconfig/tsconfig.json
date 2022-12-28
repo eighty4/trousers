@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "target": "ES2021",
-    "module": "Node16",
     "lib": [
       "ES2021"
     ],
@@ -12,26 +13,9 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
     "resolveJsonModule": false,
     "isolatedModules": true,
     "noEmit": false,
     "noEmitOnError": false,
-    "outDir": "src",
-    "rootDir": "src"
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/*.ts"
-  ],
-  "references": [
-    {
-      "path": "../packages/trousers-api"
-    },
-    {
-      "path": "../packages/trousers-data-sql"
-    }
-  ]
+  }
 }

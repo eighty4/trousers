@@ -2,8 +2,8 @@
   "name": "trousers-api",
   "version": "0.0.1",
   "license": "BSD-2-Clause",
-  "main": "./src/exports",
-  "exports": "./src/exports",
+  "exports": "./src/exports.js",
+  "types": "./src/exports.d.ts",
   "scripts": {
     "build": "tsc --build"
   },
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/luxon": "^2.3.2",
     "@types/node": "^16.4.14",
+    "trousers-tsconfig": "workspace:^0.0.1",
     "typescript": "4.9.4"
   }
 }
