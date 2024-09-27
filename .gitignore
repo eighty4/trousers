@@ -1,15 +1,8 @@
+node_modules
+
+*/*/lib
+*/*/tsconfig.tsbuildinfo
+
 .idea
 
 .DS_Store
-
-node_modules
-
-common/deploy/
-common/temp/
-common/autoinstallers/*/.npmrc
-*/*/.rush/temp/
-*/*/*.build.log
-*/*/*.build.error.log
-*/*/tsconfig.tsbuildinfo
-*/*/**/src/**/*.d.ts
-*/*/**/src/**/*.js

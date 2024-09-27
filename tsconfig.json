@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "target": "ES2021",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
     "lib": [
-      "ES2021"
+      "ESNext"
     ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,6 +16,6 @@
     "resolveJsonModule": false,
     "isolatedModules": true,
     "noEmit": false,
-    "noEmitOnError": false,
+    "noEmitOnError": false
   }
 }

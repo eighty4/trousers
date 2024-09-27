@@ -1,0 +1,11 @@
+packages:
+  - examples/fintech-startup
+  - packages/create-trousers-app
+  - packages/trousers-api
+  - packages/trousers-data-elasticsearch
+  - packages/trousers-data-interfaces
+  - packages/trousers-data-postgres
+  - packages/trousers-data-sql
+  - packages/trousers-domain
+  - packages/trousers-service-interface
+  - packages/trousers-service-rest

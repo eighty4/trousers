@@ -1,8 +1,8 @@
-import type {BankDataStore} from 'trousers-data-interfaces'
-import type {Bank, LinkedBank} from 'trousers-domain'
+import type {BankDataStore} from '@eighty4/trousers-data-interfaces'
+import type {Bank, LinkedBank} from '@eighty4/trousers-domain'
 
-import {BankSync} from './BankSync'
-import type {LinkTokenResponse, PlaidClient} from './PlaidClient'
+import {BankSync} from './BankSync.js'
+import type {LinkTokenResponse, PlaidClient} from './PlaidClient.js'
 
 export interface LinkBankRequest {
     bankId: string

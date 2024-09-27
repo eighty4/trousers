@@ -1,7 +1,7 @@
-import type {BankDataStore} from 'trousers-data-interfaces'
-import type {LinkedBank} from 'trousers-domain'
+import type {BankDataStore} from '@eighty4/trousers-data-interfaces'
+import type {LinkedBank} from '@eighty4/trousers-domain'
 
-import type {PlaidClient} from './PlaidClient'
+import type {PlaidClient} from './PlaidClient.js'
 
 export class BankSync {
 

@@ -15,3 +15,11 @@ rush build
 ```
 
 Building is incremental and subsequent `rush build` commands will only rebuild modules with updated sources.
+
+### Interactive update with `pnpm`
+
+The update command can be used interactively and recursively to upgrade project dependencies:
+
+```shell
+pnpm update --interactive --latest --recursive
+```

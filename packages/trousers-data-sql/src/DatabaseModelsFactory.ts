@@ -1,5 +1,5 @@
-import {DatabaseModels} from './DatabaseModels'
-import {type ConnectionOpts, parseDialectString} from './ConnectionOpts'
+import {type ConnectionOpts, parseDialectString} from './ConnectionOpts.js'
+import {DatabaseModels} from './DatabaseModels.js'
 
 function envVarPresent(key: string): boolean {
     const envVar = process.env[key]

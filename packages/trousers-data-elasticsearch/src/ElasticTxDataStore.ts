@@ -1,8 +1,7 @@
 import {Client} from '@elastic/elasticsearch'
-import type {BulkOperationType, MappingProperty} from '@elastic/elasticsearch/lib/api/types'
-
-import type {TransactionDataStore} from 'trousers-data-interfaces'
-import type {Transaction} from 'trousers-domain'
+import type {TransactionDataStore} from '@eighty4/trousers-data-interfaces'
+import type {Transaction} from '@eighty4/trousers-domain'
+import type {MappingProperty} from '@elastic/elasticsearch/lib/api/types.js'
 
 export class ElasticTxDataStore implements TransactionDataStore {
 
@@ -20,20 +19,20 @@ export class ElasticTxDataStore implements TransactionDataStore {
         const index = ElasticTxDataStore.indexName(userId)
         const request = {
             index,
-            body: txs.flatMap(tx => [{index: {}}, tx])
+            body: txs.flatMap(tx => [{index: {}}, tx]),
         }
 
         const response = await this.es.bulk(request)
 
         // todo what to do with errors?
         if (response.errors) {
-            response.items.forEach(action => {
-                const op = Object.keys(action)[0] as BulkOperationType
-                const item = action[op]!
-                if (item.error) {
-                    console.log('tx es save error', userId, item.status, item.status)
+            for (const item of response.items) {
+                for (const [op, response] of Object.entries(item)) {
+                    if (response.error) {
+                        console.log('tx elasticsearch save error', userId, op, response.status)
+                    }
                 }
-            })
+            }
         }
     }
 

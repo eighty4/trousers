@@ -1,8 +1,7 @@
 import type {Client} from 'pg'
 import Pool from 'pg-pool'
-
-import type {BankDataStore} from 'trousers-data-interfaces'
-import type {Account, Bank, LinkedBank} from 'trousers-domain'
+import type {BankDataStore} from '@eighty4/trousers-data-interfaces'
+import type {Account, Bank, LinkedBank} from '@eighty4/trousers-domain'
 
 export class PostgresBankDataStore implements BankDataStore {
 

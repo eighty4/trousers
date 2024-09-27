@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {writeFiles} from './files/writeFiles'
+import {writeFiles} from './files/writeFiles.js'
 
 const appDir = 'a-trousers-app'
 

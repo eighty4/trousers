@@ -1,2 +1,2 @@
-export type {BankDataStore} from './BankDataStore'
-export type {TransactionDataStore} from './TransactionDataStore'
+export type {BankDataStore} from './BankDataStore.js'
+export type {TransactionDataStore} from './TransactionDataStore.js'

@@ -1,6 +1,5 @@
 import {DataTypes, Model, type ModelStatic, Sequelize} from '@sequelize/core'
-
-import type {ConnectionOpts} from './ConnectionOpts'
+import type {ConnectionOpts} from './ConnectionOpts.js'
 
 export class BankModel extends Model {
     declare bankId: string

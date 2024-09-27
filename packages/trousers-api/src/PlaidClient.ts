@@ -1,10 +1,16 @@
-import {join} from 'path'
-
-import {Configuration, CountryCode, DepositoryAccountSubtype, PlaidApi, PlaidEnvironments, Products} from 'plaid'
-import type {ItemPublicTokenExchangeRequest, LinkTokenCreateRequest, TransactionsGetRequest} from 'plaid/api'
-
-import type {Account, Bank, Transaction} from 'trousers-domain'
-
+import {join} from 'node:path'
+import {
+    Configuration,
+    CountryCode,
+    DepositoryAccountSubtype,
+    type ItemPublicTokenExchangeRequest,
+    type LinkTokenCreateRequest,
+    PlaidApi,
+    PlaidEnvironments,
+    Products,
+    type TransactionsGetRequest,
+} from 'plaid'
+import type {Account, Bank, Transaction} from '@eighty4/trousers-domain'
 
 export interface PlaidClientConfig {
     clientId: string
@@ -155,7 +161,7 @@ export class PlaidClient {
             bankId,
             name: response.data.institution.name,
             logo: response.data.institution.logo || undefined,
-            primaryColor: response.data.primary_color.substring(1).trim(),
+            primaryColor: response.data.institution.primary_color?.substring(1).trim(),
         }
     }
 

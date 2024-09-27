@@ -1,8 +1,6 @@
 import {DateTime} from 'luxon'
-
-import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
-
-import type {PlaidClient, PageTransactionOpts} from './PlaidClient'
+import type {BankDataStore, TransactionDataStore} from '@eighty4/trousers-data-interfaces'
+import type {PlaidClient, PageTransactionOpts} from './PlaidClient.js'
 
 class TransactionSync {
     private readonly bankDataStore: BankDataStore

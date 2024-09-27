@@ -1,8 +1,7 @@
-import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
-import type {Account, Balances, Bank, LinkedBank, Transaction} from 'trousers-domain'
-
-import {DatabaseModels} from './DatabaseModels'
-import {DatabaseModelsFactory} from './DatabaseModelsFactory'
+import type {BankDataStore, TransactionDataStore} from '@eighty4/trousers-data-interfaces'
+import type {Account, Balances, Bank, LinkedBank, Transaction} from '@eighty4/trousers-domain'
+import {DatabaseModels} from './DatabaseModels.js'
+import {DatabaseModelsFactory} from './DatabaseModelsFactory.js'
 
 export class SequelizeDataStore implements BankDataStore, TransactionDataStore {
 

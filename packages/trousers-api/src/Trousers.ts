@@ -1,10 +1,9 @@
-import type {BankDataStore, TransactionDataStore} from 'trousers-data-interfaces'
-import type {TrousersService} from 'trousers-service-interface'
-
-import {PlaidClient, type PlaidClientConfig} from './PlaidClient'
-import {TrousersApi} from './TrousersApi'
-import type {TrousersComponents} from './TrousersComponents'
-import type {TrousersConfig} from './TrousersConfig'
+import type {BankDataStore, TransactionDataStore} from '@eighty4/trousers-data-interfaces'
+import type {TrousersService} from '@eighty4/trousers-service-interface'
+import {PlaidClient, type PlaidClientConfig} from './PlaidClient.js'
+import {TrousersApi} from './TrousersApi.js'
+import type {TrousersComponents} from './TrousersComponents.js'
+import type {TrousersConfig} from './TrousersConfig.js'
 
 export class Trousers {
 

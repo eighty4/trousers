@@ -1,4 +1,4 @@
-import type {Transaction} from 'trousers-domain'
+import type {Transaction} from '@eighty4/trousers-domain'
 
 export interface TransactionDataStore {
 

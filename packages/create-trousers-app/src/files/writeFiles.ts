@@ -1,9 +1,9 @@
 import {mkdir, writeFile} from 'node:fs/promises'
 import {join} from 'node:path'
 
-import appScriptFactory from './app'
-import envFileFactory from './env'
-import packageJsonFactory from './package'
+import appScriptFactory from './app.js'
+import envFileFactory from './env.js'
+import packageJsonFactory from './package.js'
 
 export async function writeFiles(appDir: string) {
     await makeAppDir(appDir)

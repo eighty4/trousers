@@ -1,4 +1,4 @@
-import type {Account, Bank, LinkedBank} from 'trousers-domain'
+import type {Account, Bank, LinkedBank} from '@eighty4/trousers-domain'
 
 export interface BankDataStore {
 

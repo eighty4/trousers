@@ -1,7 +1,7 @@
-import type {Account, Bank, LinkedBank} from 'trousers-domain'
-
-import {DatabaseModels} from './DatabaseModels'
-import {SequelizeDataStore} from './SequelizeDataStore'
+import {beforeEach, describe, expect, it} from 'vitest'
+import type {Account, Bank, LinkedBank} from '@eighty4/trousers-domain'
+import {DatabaseModels} from './DatabaseModels.js'
+import {SequelizeDataStore} from './SequelizeDataStore.js'
 
 const bank: Bank = {
     bankId: 'bankId',
@@ -69,32 +69,17 @@ describe('SequelizeBankDataStore', () => {
 
             it('error when bankId is null', async () => {
                 const bank = {name: 'My Bank', primaryColor: '00ff00'} as Bank
-                try {
-                    await bankDataStore.saveBank(bank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('Bank.bankId cannot be null')
-                }
+                expect(() => bankDataStore.saveBank(bank)).rejects.toThrow('Bank.bankId cannot be null')
             })
 
             it('error when name is null', async () => {
                 const bank = {bankId: 'bankId', primaryColor: '00ff00'} as Bank
-                try {
-                    await bankDataStore.saveBank(bank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('Bank.name cannot be null')
-                }
+                expect(() => bankDataStore.saveBank(bank)).rejects.toThrow('Bank.name cannot be null')
             })
 
             it('error when primaryColor exceeds 6 char length', async () => {
                 const bank = {bankId: 'bankId', name: 'My Bank', primaryColor: '#00ff00'} as Bank
-                try {
-                    await bankDataStore.saveBank(bank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('Validation len on primaryColor failed')
-                }
+                expect(() => bankDataStore.saveBank(bank)).rejects.toThrow('Validation len on primaryColor failed')
             })
         })
     })
@@ -159,24 +144,14 @@ describe('SequelizeBankDataStore', () => {
                     bankId: 'notabankId',
                 }
 
-                try {
-                    await bankDataStore.saveLinkedBank(invalidLinkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank.Bank foreign key `notabankId` does not reference an existing Bank')
-                }
+                expect(() => bankDataStore.saveLinkedBank(invalidLinkedBank)).rejects.toThrow('LinkedBank.Bank foreign key `notabankId` does not reference an existing Bank')
             })
 
             it('error when userId and bankId link already exists', async () => {
                 await bankDataStore.saveBank(bank)
                 await bankDataStore.saveLinkedBank(linkedBank)
 
-                try {
-                    await bankDataStore.saveLinkedBank(linkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank already exists with userId `userId` and bankId `bankId`')
-                }
+                expect(() => bankDataStore.saveLinkedBank(linkedBank)).rejects.toThrow('LinkedBank already exists with userId `userId` and bankId `bankId`')
             })
 
             it('error when itemId is null', async () => {
@@ -191,12 +166,7 @@ describe('SequelizeBankDataStore', () => {
                     accessToken: 'accesstoken',
                 }
 
-                try {
-                    await bankDataStore.saveLinkedBank(linkedBank as LinkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank.itemId cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedBank(linkedBank as LinkedBank)).rejects.toThrow('LinkedBank.itemId cannot be null')
             })
 
             it('error when userId is null', async () => {
@@ -211,12 +181,7 @@ describe('SequelizeBankDataStore', () => {
                     accessToken: 'accesstoken',
                 }
 
-                try {
-                    await bankDataStore.saveLinkedBank(linkedBank as LinkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank.userId cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedBank(linkedBank as LinkedBank)).rejects.toThrow('LinkedBank.userId cannot be null')
             })
 
             it('error when bankId is null', async () => {
@@ -231,12 +196,7 @@ describe('SequelizeBankDataStore', () => {
                     accessToken: 'accessToken',
                 }
 
-                try {
-                    await bankDataStore.saveLinkedBank(linkedBank as LinkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank.bankId cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedBank(linkedBank as LinkedBank)).rejects.toThrow('LinkedBank.bankId cannot be null')
             })
 
             it('error when accessToken is null', async () => {
@@ -251,12 +211,7 @@ describe('SequelizeBankDataStore', () => {
                     userId: 'userId',
                 }
 
-                try {
-                    await bankDataStore.saveLinkedBank(linkedBank as LinkedBank)
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedBank.accessToken cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedBank(linkedBank as LinkedBank)).rejects.toThrow('LinkedBank.accessToken cannot be null')
             })
         })
     })
@@ -395,60 +350,45 @@ describe('SequelizeBankDataStore', () => {
                 const account2 = {...account, accountId: 'acct2'}
                 const account3 = {...account, accountId: 'acct3'}
 
-                try {
-                    await bankDataStore.saveLinkedAccounts(invalidLinkedBank, [account1, account2, account3])
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedAccount.LinkedBank foreign key `notTheLinkedBank` does not reference an existing LinkedBank')
-                }
+                expect(() => bankDataStore.saveLinkedAccounts(invalidLinkedBank, [account1, account2, account3]))
+                    .rejects
+                    .toThrow('LinkedAccount.LinkedBank foreign key `notTheLinkedBank` does not reference an existing LinkedBank')
             })
 
             it('errors when accountId is null', async () => {
                 const invalidAccount: Account = {...account}
                 delete (invalidAccount as any).accountId
 
-                try {
-                    await bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount])
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedAccount.linkedAccountId cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount]))
+                    .rejects
+                    .toThrow('LinkedAccount.linkedAccountId cannot be null')
             })
 
             it('errors when itemId is null', async () => {
                 const invalidLinkedBank: LinkedBank = {...linkedBank}
                 delete (invalidLinkedBank as any).itemId
 
-                try {
-                    await bankDataStore.saveLinkedAccounts(invalidLinkedBank, [account])
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedAccount.itemId cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedAccounts(linkedBank, [account]))
+                    .rejects
+                    .toThrow('LinkedAccount.itemId cannot be null')
             })
 
             it('errors when displayName is null', async () => {
                 const invalidAccount: Account = {...account}
                 delete (invalidAccount as any).displayName
 
-                try {
-                    await bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount])
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedAccount.displayName cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount]))
+                    .rejects
+                    .toThrow('LinkedAccount.displayName cannot be null')
             })
 
             it('errors when accountType is null', async () => {
                 const invalidAccount: Account = {...account}
                 delete (invalidAccount as any).type
 
-                try {
-                    await bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount])
-                    fail()
-                } catch (e: any) {
-                    expect(e.message).toBe('LinkedAccount.type cannot be null')
-                }
+                expect(() => bankDataStore.saveLinkedAccounts(linkedBank, [invalidAccount]))
+                    .rejects
+                    .toThrow('LinkedAccount.type cannot be null')
             })
         })
     })

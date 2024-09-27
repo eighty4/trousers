@@ -1,8 +1,8 @@
 {
-  "extends": "./node_modules/trousers-tsconfig/tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "src",
+    "outDir": "lib",
     "paths": {
       "trousers-domain": [
         "../trousers-domain"

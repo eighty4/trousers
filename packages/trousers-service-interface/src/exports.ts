@@ -1,1 +1,1 @@
-export {TrousersServiceStatus, type TrousersService} from './TrousersService'
+export {TrousersServiceStatus, type TrousersService} from './TrousersService.js'
