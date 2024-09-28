@@ -1,15 +1,20 @@
 {
-  "name": "create-trousers-app",
+  "name": "create-trousers",
   "version": "0.0.1",
   "license": "BSD-2-Clause",
   "author": "Adam McKee <adam.be.g84d@gmail.com>",
   "type": "module",
   "bin": "lib/CreateTrousersApp.js",
   "scripts": {
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "dev": "pnpm build && node lib/CreateTrousersApp.js"
   },
   "devDependencies": {
     "@types/node": "^22.7.4",
     "typescript": "5.6.2"
-  }
+  },
+  "files": [
+    "lib/**/*",
+    "package.json"
+  ]
 }

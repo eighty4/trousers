@@ -1,6 +1,5 @@
 import {mkdir, writeFile} from 'node:fs/promises'
 import {join} from 'node:path'
-
 import appScriptFactory from './app.js'
 import envFileFactory from './env.js'
 import packageJsonFactory from './package.js'
