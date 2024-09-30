@@ -1,7 +1,7 @@
 node_modules
 
-*/*/lib
-*/*/tsconfig.tsbuildinfo
+**/lib
+**/tsconfig.tsbuildinfo
 
 .idea
 
