@@ -12,6 +12,7 @@ export async function flutterCreate(opts: FlutterCreateOptions): Promise<void> {
             'create',
             '--org', opts.org ?? 'trousers.fintech.flop',
             '--project-name', opts.projectName,
+            '--platforms', 'android,ios,web',
             opts.projectDir,
         ], process.cwd(), 1)
     } catch (e: any) {
