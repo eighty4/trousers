@@ -4,17 +4,11 @@ A hobby project to bootstrap fintech startups that specialize in modular JavaScr
 
 ## Building Trousers
 
-Trousers' monorepo and builds are managed by [Rush](https://rushjs.io/) and [pnpm](https://pnpm.io/).
-
-`rush update` will install dependencies, including the pnpm version used by this project.  
+Trousers' monorepo is managed by [pnpm](https://pnpm.io/).
 
 ```
-npm install -g @microsoft/rush
-rush update
-rush build
+pnpm -r build
 ```
-
-Building is incremental and subsequent `rush build` commands will only rebuild modules with updated sources.
 
 ### Interactive update with `pnpm`
 
