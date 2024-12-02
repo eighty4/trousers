@@ -8,10 +8,10 @@ export interface Balances {
 
 export interface Account {
     accountId: string
-    mask: string | null
+    mask?: string | null
     displayName: string
-    officialName: string | null
+    officialName?: string | null
     type: string
-    subtype: string | null
+    subtype?: string | null
     balances?: Balances
 }
